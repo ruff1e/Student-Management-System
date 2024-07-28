@@ -1,17 +1,19 @@
 package com.student.studentDemo.model;
-
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+
 @Entity
+@Getter
+@Setter
+@Component
 @NoArgsConstructor
 @Table(name = "tbl_classes")
 public class Classes {
@@ -28,10 +30,15 @@ public class Classes {
     private Set<Student> students;
 
 
-    public Classes(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @OneToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
+    @OneToMany(mappedBy = "classes", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Grades> grades;
+
+
+
 
     @Override
     public String toString() {
@@ -41,27 +48,7 @@ public class Classes {
                 '}';
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
+    public String getClassName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
     }
 }
