@@ -1,12 +1,11 @@
 package com.student.studentDemo.controller;
-
-
 import com.student.studentDemo.model.Teacher;
 import com.student.studentDemo.service.TeacherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 
 
 @RestController
