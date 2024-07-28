@@ -1,11 +1,11 @@
 package com.student.studentDemo.dto;
-
 import com.student.studentDemo.model.Classes;
 import jakarta.persistence.Column;
 import lombok.*;
-
 import java.util.List;
 import java.util.Set;
+
+
 
 @Data
 @AllArgsConstructor
@@ -18,7 +18,7 @@ public class StudentDTO {
     private String email;
     private String address;
 
-    private List<ClassDTO> classes;
+
 
 
 
